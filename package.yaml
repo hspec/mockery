@@ -7,7 +7,7 @@ synopsis:       Support functions for automated testing
 description:    Support functions for automated testing
 
 
-github: sol/mockery
+github: hspec/mockery
 
 ghc-options: -Wall
 
