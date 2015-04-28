@@ -6,6 +6,7 @@ category:       Testing
 synopsis:       Support functions for automated testing
 description:    Support functions for automated testing
 
+homepage: null
 
 github: hspec/mockery
 
