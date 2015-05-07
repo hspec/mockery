@@ -1,4 +1,4 @@
--- This file has been generated from package.yaml by hpack.
+-- This file has been generated from package.yaml by hpack version 0.1.2.
 --
 -- see: https://github.com/sol/hpack
 
@@ -35,6 +35,8 @@ test-suite spec
   type: exitcode-stdio-1.0
   hs-source-dirs: test
   main-is: Spec.hs
+  other-modules:
+      Test.Mockery.DirectorySpec
   build-depends:
       base == 4.*
     , temporary
