@@ -24,10 +24,12 @@ library
   hs-source-dirs: src
   exposed-modules:
       Test.Mockery.Directory
+      Test.Mockery.Logging
   build-depends:
       base == 4.*
     , temporary
     , directory
+    , logging-facade
   ghc-options: -Wall
   default-language: Haskell2010
 
@@ -37,10 +39,12 @@ test-suite spec
   main-is: Spec.hs
   other-modules:
       Test.Mockery.DirectorySpec
+      Test.Mockery.LoggingSpec
   build-depends:
       base == 4.*
     , temporary
     , directory
+    , logging-facade
 
     , mockery
     , hspec == 2.*

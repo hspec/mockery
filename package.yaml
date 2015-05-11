@@ -17,6 +17,7 @@ dependencies:
   - base == 4.*
   - temporary
   - directory
+  - logging-facade
 
 library:
   source-dirs: src
