@@ -3,7 +3,7 @@
 -- see: https://github.com/sol/hpack
 
 name:           mockery
-version:        0.1.0
+version:        0.2.0
 synopsis:       Support functions for automated testing
 description:    Support functions for automated testing
 category:       Testing
