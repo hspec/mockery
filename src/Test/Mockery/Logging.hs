@@ -2,6 +2,7 @@
 module Test.Mockery.Logging (
   captureLogMessages
 , captureLogMessages_
+, LogLevel(..)
 ) where
 
 import           Control.Applicative
