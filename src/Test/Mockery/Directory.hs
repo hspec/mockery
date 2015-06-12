@@ -2,12 +2,16 @@ module Test.Mockery.Directory (
   inTempDirectory
 , inTempDirectoryNamed
 , withFile
+, touch
 ) where
 
 import           Control.Exception
+import           Control.Monad
 import           System.Directory
+import           System.IO.Error
 import           System.IO hiding (withFile)
 import           System.IO.Temp (withSystemTempDirectory, withSystemTempFile)
+import qualified Data.ByteString as B
 
 -- |
 -- Run given action with the current working directory set to a temporary
@@ -41,3 +45,11 @@ withFile input action = withSystemTempFile "mockery" $ \file h -> do
   hPutStr h input
   hClose h
   action file
+
+-- |
+-- Update the modification time of the specified file.  Create an empty file if
+-- the file does not exist.
+touch :: FilePath -> IO ()
+touch file = do
+  c <- catchJust (guard . isDoesNotExistError) (B.readFile file) (const $ return B.empty)
+  B.writeFile file c

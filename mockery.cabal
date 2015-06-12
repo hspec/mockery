@@ -1,4 +1,4 @@
--- This file has been generated from package.yaml by hpack version 0.1.2.
+-- This file has been generated from package.yaml by hpack version 0.3.0.
 --
 -- see: https://github.com/sol/hpack
 
@@ -27,6 +27,7 @@ library
       Test.Mockery.Logging
   build-depends:
       base == 4.*
+    , bytestring
     , temporary
     , directory
     , logging-facade
@@ -42,6 +43,7 @@ test-suite spec
       Test.Mockery.LoggingSpec
   build-depends:
       base == 4.*
+    , bytestring
     , temporary
     , directory
     , logging-facade

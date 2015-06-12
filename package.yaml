@@ -15,6 +15,7 @@ ghc-options: -Wall
 
 dependencies:
   - base == 4.*
+  - bytestring
   - temporary
   - directory
   - logging-facade
