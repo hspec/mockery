@@ -30,6 +30,7 @@ library
     , bytestring
     , temporary
     , directory
+    , filepath
     , logging-facade
   ghc-options: -Wall
   default-language: Haskell2010
@@ -46,6 +47,7 @@ test-suite spec
     , bytestring
     , temporary
     , directory
+    , filepath
     , logging-facade
 
     , mockery

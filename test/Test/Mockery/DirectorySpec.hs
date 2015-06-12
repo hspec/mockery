@@ -27,6 +27,10 @@ spec = do
         touch name
         readFile name `shouldReturn` ""
 
+      it "creates any missing directories" $ do
+        touch "foo/bar/baz"
+        readFile "foo/bar/baz" `shouldReturn` ""
+
       context "when file already exists" $ do
         before_ (writeFile name "bar") $ do
           it "updates modification time" $ do

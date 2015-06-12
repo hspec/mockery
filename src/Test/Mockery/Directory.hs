@@ -8,6 +8,7 @@ module Test.Mockery.Directory (
 import           Control.Exception
 import           Control.Monad
 import           System.Directory
+import           System.FilePath
 import           System.IO.Error
 import           System.IO hiding (withFile)
 import           System.IO.Temp (withSystemTempDirectory, withSystemTempFile)
@@ -47,9 +48,11 @@ withFile input action = withSystemTempFile "mockery" $ \file h -> do
   action file
 
 -- |
--- Update the modification time of the specified file.  Create an empty file if
+-- Update the modification time of the specified file.
+-- Create an empty file (including any missing directories in the file path) if
 -- the file does not exist.
 touch :: FilePath -> IO ()
 touch file = do
+  createDirectoryIfMissing True (takeDirectory file)
   c <- catchJust (guard . isDoesNotExistError) (B.readFile file) (const $ return B.empty)
   B.writeFile file c
