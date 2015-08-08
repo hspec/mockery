@@ -1,3 +1,4 @@
+{-# LANGUAGE CPP #-}
 {-# LANGUAGE RecordWildCards #-}
 module Test.Mockery.Logging (
   captureLogMessages
@@ -5,7 +6,9 @@ module Test.Mockery.Logging (
 , LogLevel(..)
 ) where
 
+#if !MIN_VERSION_base(4,8,0)
 import           Control.Applicative
+#endif
 import           Control.Exception
 import           Data.IORef
 import           System.Logging.Facade.Types
