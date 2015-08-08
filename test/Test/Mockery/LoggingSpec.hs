@@ -1,5 +1,9 @@
+{-# LANGUAGE CPP #-}
 module Test.Mockery.LoggingSpec (spec) where
 
+#if !MIN_VERSION_base(4,8,0)
+import           Control.Applicative
+#endif
 import Test.Hspec
 import Data.IORef
 import System.Logging.Facade.Types
