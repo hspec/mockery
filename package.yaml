@@ -15,6 +15,7 @@ ghc-options: -Wall
 
 dependencies:
   - base == 4.*
+  - base-compat
   - bytestring
   - temporary
   - directory
