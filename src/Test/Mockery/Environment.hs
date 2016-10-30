@@ -33,7 +33,7 @@ withEnvironment environment action = bracketEnvironment $ do
 -- environment can no longer be run in parallel.
 withModifiedEnvironment :: [(String, String)] -> IO a -> IO a
 withModifiedEnvironment environment action = bracketEnvironment $ do
-  modifyEnvironment environment
+  extendEnvironment environment
   action
 
 bracketEnvironment :: IO a -> IO a
@@ -42,10 +42,10 @@ bracketEnvironment = bracket getEnvironment setEnvironment . const
 setEnvironment :: [(String, String)] -> IO ()
 setEnvironment environment = do
   clearEnvironment
-  modifyEnvironment environment
+  extendEnvironment environment
 
-modifyEnvironment :: [(String, String)] -> IO ()
-modifyEnvironment environment = forM_ environment $ uncurry setEnv
+extendEnvironment :: [(String, String)] -> IO ()
+extendEnvironment environment = forM_ environment $ uncurry setEnv
 
 clearEnvironment :: IO ()
 clearEnvironment = do
