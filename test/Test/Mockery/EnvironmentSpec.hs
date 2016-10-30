@@ -6,19 +6,15 @@ import           Test.Hspec
 import           Test.Mockery.Environment
 
 spec :: Spec
-spec = describe "withEnvironment" $ do
-  it "hides the environment" $ do
-    withEnvironment [("foo", "bar")] $ do
-      env <- getEnvironment
-      env `shouldMatchList` [("foo", "bar")]
-  it "restores the environment" $ do
-    oldEnv <- getEnvironment
-    withEnvironment [("foo", "bar")] $ do
-      return ()
-    newEnv <- getEnvironment
-    newEnv `shouldMatchList` oldEnv
-  it "should allow the environment to be modified" $ do
-    withEnvironment [] $ do
-      setEnv "foo2" "bar2"
-      var <- lookupEnv "foo2"
-      var `shouldBe` Just "bar2"
+spec = do
+  describe "withEnvironment" $ do
+    it "runs the given action with the specified environment" $ do
+      withEnvironment [("foo", "bar")] $ do
+        getEnvironment `shouldReturn` [("foo", "bar")]
+
+    it "restores the original environment" $ do
+      old <- getEnvironment
+      withEnvironment [("foo", "bar")] $ do
+        return ()
+      new <- getEnvironment
+      new `shouldMatchList` old

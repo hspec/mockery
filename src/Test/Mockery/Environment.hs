@@ -10,7 +10,8 @@ import           System.Environment.Compat
 -- Before executing the action, `withEnvironment` backs up the current environment,
 -- clears out the environment, and then applies the supplied environment.
 -- After the action has completed the original environment is restored.
--- __Note__: The environment is global for a process, so tests that depend on the
+--
+-- __Note__: The environment is global to a process, so tests that modify the
 -- environment can no longer be run in parallel.
 withEnvironment :: [(String, String)] -> IO a -> IO a
 withEnvironment environment action = bracket saveEnv restoreEnv $ const action
