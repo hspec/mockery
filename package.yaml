@@ -34,3 +34,4 @@ tests:
     dependencies:
       - mockery
       - hspec == 2.*
+    build-tools: hspec-discover
